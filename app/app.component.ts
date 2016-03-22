@@ -6,7 +6,8 @@ import { Component } from 'angular2/core';
   selector: 'my-app',
   template: `
     <div class="container">
-      <h1>Skeleton Angular2 App!</h1>
+      <h1>To-Do List</h1>
+      <h3 *ngFor="#task of tasks">{{ task.description }}</h3>
     </div>
   `
 })
@@ -14,5 +15,20 @@ import { Component } from 'angular2/core';
 //class definition:
 
 export class AppComponent {
+  public tasks: Task[];
+  constructor() {
+    this.tasks = [
+      new Task("Create To-Do List app.", 0),
+      new Task("Learn Kung Fu.", 1),
+      new Task("Rewatch all of the Lord of the Rings movies.", 2),
+      new Task("Do the laundry.", 3)
+    ];
+  }
+}
 
+export class Task {
+  public done: boolean = false;
+  constructor(public description: string, public id: number){
+
+  }
 }
