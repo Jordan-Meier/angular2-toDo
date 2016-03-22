@@ -7,7 +7,9 @@ import { Component } from 'angular2/core';
   template: `
     <div class="container">
       <h1>To-Do List</h1>
-      <h3 *ngFor="#task of tasks">{{ task.description }}</h3>
+      <h3 *ngFor="#task of tasks" (click)="taskWasSelected(task)">
+        {{ task.description }}
+      </h3>
     </div>
   `
 })
@@ -23,6 +25,9 @@ export class AppComponent {
       new Task("Rewatch all of the Lord of the Rings movies.", 2),
       new Task("Do the laundry.", 3)
     ];
+  }
+  taskWasSelected(clickedTask: Task): void {
+    console.log(clickedTask);
   }
 }
 
